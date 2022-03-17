@@ -1,1 +1,33 @@
-<p>currency-conversion-form works!</p>
+<div class="c-form container-fluid">
+    <div class="row">
+        <div class="col-md-5 u-mb-15">
+            <label>From Amount</label>
+        </div>
+        <div class="col-md-2 u-mb-15">
+            <div class="c-form__conversion-icon">
+                <svg>
+                    <use xlink:href="/assets/images/svg-icons.svg#icon-conversion"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="col-md-5 u-mb-15">
+            <label>To Amount</label>
+        </div>
+    </div>
+
+
+    <div class="c-form__footer">
+        <div *ngIf="currencyConversionDTO.fromAmount && currencyConversionDTO.toAmount">
+            <div class="c-form__from-amount">{{currencyConversionDTO.fromAmount }}
+                {{currencyConversionDTO.fromCurrency}} =
+            </div>
+            <div class="c-form__to-amount">{{currencyConversionDTO.toAmount }} {{currencyConversionDTO.toCurrency}}
+            </div>
+        </div>
+
+        <div class="c-form__details">View Details</div>
+
+    </div>
+
+
+</div>

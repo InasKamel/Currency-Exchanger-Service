@@ -12,18 +12,18 @@ export class CurrencyConversionFormComponent implements OnInit {
   currencyConversionDTO: CurrencyConversionDTO;
   isLoading: boolean;
   currencyDDL: string[];
+  baseCurrencyAccessRestricted: boolean;
 
   constructor(private currencyExchangerService: CurrencyExchangerService) {
     this.currencyConversionDTO = new CurrencyConversionDTO();
-
-    this.currencyConversionDTO.fromCurrency = "EUR";
-    this.currencyConversionDTO.toCurrency = "USD";
-    this.currencyConversionDTO.fromAmount = -1;
-
+    this.currencyConversionDTO.fromAmount = 10.00;
+    this.currencyConversionDTO.fromCurrency = "USD";
+    this.currencyConversionDTO.toAmount = 157.22732;
+    this.currencyConversionDTO.toCurrency = "EGP";
   }
 
   ngOnInit(): void {
-    this.convert();
+    // this.convert();
     this.getCurrencies();
 
   }
@@ -34,11 +34,13 @@ export class CurrencyConversionFormComponent implements OnInit {
     this.currencyExchangerService.getHistoricalRates(this.currencyConversionDTO).subscribe(
       res => {
         this.isLoading = false;
+        console.log("convert", res)
+
         if (res.success) {
           this.currencyConversionDTO.toAmount = Number((res.rates[this.currencyConversionDTO.toCurrency] * this.currencyConversionDTO.fromAmount).toFixed(5));
-          console.log(this.currencyConversionDTO)
+          this.baseCurrencyAccessRestricted = false;
         } else {
-          console.log(res.error.type);
+          this.baseCurrencyAccessRestricted = true;
         }
       });
 
@@ -46,9 +48,10 @@ export class CurrencyConversionFormComponent implements OnInit {
 
   getCurrencies() {
     this.currencyExchangerService.getCurrenciesSymbols().subscribe(res => {
+      console.log("get currency", res)
+
       if (res.success) {
         this.currencyDDL = Object.keys(res.symbols);
-        console.log(this.currencyDDL)
       }
     })
   }

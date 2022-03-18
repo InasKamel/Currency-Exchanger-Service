@@ -1,0 +1,56 @@
+.c-form {
+    padding: 40px 40px 55px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgb(0 17 51 / 5%) 0px 3px 15px;
+    border: 1px solid #e4e7eb;
+
+    &__conversion-icon {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: $color-primary;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__from-amount {
+        font-family: $font-family-bold;
+        color: $color-secondary;
+        font-size: 16px;
+    }
+
+    &__to-amount {
+        font-family: $font-family-bold;
+        color: $color-primary-dark;
+        font-size: 30px;
+    }
+
+    &__details {
+        padding: 10px 5px;
+        border: 1px solid $color-primary;
+        color: $color-primary;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        font-size: 16px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $color-primary;
+            color: #fff;
+        }
+    }
+}

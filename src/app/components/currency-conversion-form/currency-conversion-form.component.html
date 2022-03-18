@@ -1,9 +1,21 @@
-<div class="c-form container-fluid">
+<form class="c-form container">
     <div class="row">
         <div class="col-md-5 u-mb-15">
             <label>From Amount</label>
+            <div class="currency-control">
+                <input type="text" appPositiveNumber name="from-amount" class="form-control"
+                    [(ngModel)]="currencyConversionDTO.fromAmount" (ngModelChange)="convert()" />
+                <kendo-dropdownlist name="from-currency" [data]="currencyDDL"
+                    [(ngModel)]="currencyConversionDTO.fromCurrency" (ngModelChange)="convert()">
+                </kendo-dropdownlist>
+            </div>
+            <div class="currency-control__info" *ngIf="baseCurrencyAccessRestricted">Selected currency access
+                restricted, please select another currency
+
+            </div>
+
         </div>
-        <div class="col-md-2 u-mb-15">
+        <div class="col-md-2">
             <div class="c-form__conversion-icon">
                 <svg>
                     <use xlink:href="/assets/images/svg-icons.svg#icon-conversion"></use>
@@ -12,6 +24,13 @@
         </div>
         <div class="col-md-5 u-mb-15">
             <label>To Amount</label>
+            <div class="currency-control">
+                <input type="text" appPositiveNumber name="to-amount" class="form-control"
+                    [(ngModel)]="currencyConversionDTO.toAmount" disabled />
+                <kendo-dropdownlist name="to-currency" [data]="currencyDDL"
+                    [(ngModel)]="currencyConversionDTO.toCurrency" (ngModelChange)="convert()">
+                </kendo-dropdownlist>
+            </div>
         </div>
     </div>
 
@@ -25,9 +44,9 @@
             </div>
         </div>
 
-        <div class="c-form__details">View Details</div>
+        <div class="c-form__details">More Details</div>
 
     </div>
 
 
-</div>
+</form>

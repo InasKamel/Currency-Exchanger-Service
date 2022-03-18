@@ -7,6 +7,10 @@ import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CurrencyConversionFormComponent } from './components/currency-conversion-form/currency-conversion-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { FormsModule } from '@angular/forms';
+import { PositiveNumberDirective } from './shared/directives/positive-number.directive';
+
 
 
 
@@ -14,13 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HomeComponent,
-    CurrencyConversionFormComponent
+    CurrencyConversionFormComponent,
+    PositiveNumberDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DropDownsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

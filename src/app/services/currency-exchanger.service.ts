@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { popularCurrencySymbolEnum } from '../shared/enums/popular-currency-sumbol.enum';
 import { CurrencyConversionDTO } from '../shared/models/currency-conversion-dto';
 
 @Injectable({
@@ -21,6 +22,11 @@ export class CurrencyExchangerService {
 
   getCurrenciesSymbols() {
     return this.http.get(`${this.baseURL}symbols${this.accessKey}`) as Observable<any>
+
+  }
+
+  getLatestRates(baseCurrency: string): Observable<any> {
+    return this.http.get(`${this.baseURL}latest${this.accessKey}&base=${baseCurrency}&symbols=${(Object.keys(popularCurrencySymbolEnum).filter(k => k.length == 3)).join()}`) as Observable<any>
 
   }
 }

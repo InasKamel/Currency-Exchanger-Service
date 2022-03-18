@@ -4,9 +4,9 @@
             <label>From Amount</label>
             <div class="currency-control">
                 <input type="text" appPositiveNumber name="from-amount" class="form-control"
-                    [(ngModel)]="currencyConversionDTO.fromAmount" (ngModelChange)="convert()" />
+                    [(ngModel)]="currencyConversionDTO.fromAmount" (ngModelChange)="fromAmountChange()" />
                 <kendo-dropdownlist name="from-currency" [data]="currencyDDL"
-                    [(ngModel)]="currencyConversionDTO.fromCurrency" (ngModelChange)="convert()">
+                    [(ngModel)]="currencyConversionDTO.fromCurrency" (ngModelChange)="fromAmountChange()">
                 </kendo-dropdownlist>
             </div>
             <div class="currency-control__info" *ngIf="baseCurrencyAccessRestricted">Selected currency access

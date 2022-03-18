@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CurrencyExchangerService } from 'src/app/services/currency-exchanger.service';
 import { CurrencyConversionDTO } from 'src/app/shared/models/currency-conversion-dto';
 
@@ -8,6 +8,8 @@ import { CurrencyConversionDTO } from 'src/app/shared/models/currency-conversion
   styleUrls: ['./currency-conversion-form.component.scss']
 })
 export class CurrencyConversionFormComponent implements OnInit {
+
+  @Output() baseAmountChange: EventEmitter<CurrencyConversionDTO> = new EventEmitter<CurrencyConversionDTO>();
 
   currencyConversionDTO: CurrencyConversionDTO;
   isLoading: boolean;
@@ -20,12 +22,19 @@ export class CurrencyConversionFormComponent implements OnInit {
     this.currencyConversionDTO.fromCurrency = "USD";
     this.currencyConversionDTO.toAmount = 157.22732;
     this.currencyConversionDTO.toCurrency = "EGP";
+
   }
 
   ngOnInit(): void {
     // this.convert();
+    this.fromAmountChange();
     this.getCurrencies();
 
+  }
+
+  fromAmountChange() {
+    this.baseAmountChange.emit(this.currencyConversionDTO);
+    this.convert();
   }
 
   convert() {

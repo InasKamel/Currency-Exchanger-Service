@@ -5,6 +5,36 @@
 </div>
 
 <!-- start currency conversion form -->
-<app-currency-conversion-form></app-currency-conversion-form>
+<app-currency-conversion-form (baseAmountChange)="baseAmountChange($event)"></app-currency-conversion-form>
 
 <!-- start popular currency grid -->
+<div class="section-header">Popular Currencies
+    <svg kendoTooltip title="Here you can view your from amount converted to the most popular currencies">
+        <use xlink:href="/assets/images/svg-icons.svg#icon-info"></use>
+    </svg>
+</div>
+
+<div class="row">
+    <div class="col-md-4" *ngFor="let currecny of popularCurrencies">
+        <div class="c-card">
+            <div class="c-card__symbol" [ngClass]="'c-card__symbol--' + currecny.color">{{currecny.symbol}}</div>
+            <div>
+                <div class="c-card__amount">{{currecny.resultAmount | number:'.5'}}</div>
+                <div class="c-card__name">{{currecny.name}}</div>
+            </div>
+
+            <!-- start loading icon -->
+            <svg *ngIf="popularCurrenciesLoading" class="c-card__loading" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 100 100"
+                preserveAspectRatio="xMidYMid">
+                <circle cx="50" cy="50" fill="none" stroke="#006fe8" stroke-width="10" r="35"
+                    stroke-dasharray="164.93361431346415 56.97787143782138">
+                    <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s"
+                        values="0 50 50;360 50 50" keyTimes="0;1" />
+                </circle>
+            </svg>
+            <!-- end loading icon -->
+
+        </div>
+    </div>
+</div>

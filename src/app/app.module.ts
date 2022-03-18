@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
 import { PositiveNumberDirective } from './shared/directives/positive-number.directive';
+import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+
 
 
 
@@ -27,7 +29,8 @@ import { PositiveNumberDirective } from './shared/directives/positive-number.dir
     AppRoutingModule,
     BrowserAnimationsModule,
     DropDownsModule,
-    FormsModule
+    FormsModule,
+    TooltipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

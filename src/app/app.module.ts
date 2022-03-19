@@ -11,6 +11,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormsModule } from '@angular/forms';
 import { PositiveNumberDirective } from './shared/directives/positive-number.directive';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
 
 
 
@@ -21,7 +23,9 @@ import { TooltipsModule } from '@progress/kendo-angular-tooltip';
     AppComponent,
     HomeComponent,
     CurrencyConversionFormComponent,
-    PositiveNumberDirective
+    PositiveNumberDirective,
+    TopBarComponent,
+    CurrencyDetailsComponent
   ],
   imports: [
     BrowserModule,

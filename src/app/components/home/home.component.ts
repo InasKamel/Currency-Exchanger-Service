@@ -16,12 +16,13 @@ export class HomeComponent implements OnInit {
   popularCurrenciesLoading: boolean;
   baseAmount: number;
   popularCurrencies: PopularCurrencyDTO[];
+  popularCurrencySymbolEnum: any;
 
-  constructor(private currencyExchangerService: CurrencyExchangerService) { }
+  constructor(private currencyExchangerService: CurrencyExchangerService) {
+    this.popularCurrencySymbolEnum = popularCurrencySymbolEnum;
+  }
 
   ngOnInit(): void {
-    console.log(CurrencyColorEnum[1])
-    console.log(`latest?access_key=477f73b9db08241187d368ca73838cb8&base=USD&symbols=${(Object.keys(popularCurrencySymbolEnum).filter(k => k.length == 3)).join()}`)
   }
 
   baseAmountChange(currencyConversionDTO: CurrencyConversionDTO) {

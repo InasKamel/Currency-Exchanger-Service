@@ -1,0 +1,13 @@
+<div class="topbar">
+    <div class="container">
+        <img class="topbar__logo" src="/assets/images/logo.svg" [routerLink]="'/currency-exchanger'" alt="">
+
+        <div class="topbar__links">
+            <div class="topbar__link" [class.is-selected]="EURUSDActivated"
+                (click)="EURUSDActivated? null:viewDetailsPage()">EUR-USD</div>
+            <div class="topbar__link" [class.is-selected]="EURGBPActivated"
+                (click)="EURGBPActivated? null:viewDetailsPage()">EUR-GBP</div>
+        </div>
+    </div>
+
+</div>

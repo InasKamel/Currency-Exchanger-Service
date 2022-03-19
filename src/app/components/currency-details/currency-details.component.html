@@ -1,0 +1,10 @@
+<!-- start page header -->
+<div class="page-header">
+    <div class="page-header__title">{{fromCurrency}}</div>
+    <div class="page-header__subtitle">{{fromCurrency}}</div>
+</div>
+
+<!-- start currency conversion form -->
+<app-currency-conversion-form [fromCurrency]="popularCurrencySymbolEnum[fromCurrency]"
+    [toCurrency]="popularCurrencySymbolEnum[toCurrency]" [currencyReadOnly]="true">
+</app-currency-conversion-form>

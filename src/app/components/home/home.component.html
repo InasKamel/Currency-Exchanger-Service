@@ -5,7 +5,9 @@
 </div>
 
 <!-- start currency conversion form -->
-<app-currency-conversion-form (baseAmountChange)="baseAmountChange($event)"></app-currency-conversion-form>
+<app-currency-conversion-form [fromCurrency]="popularCurrencySymbolEnum.EUR"
+    [toCurrency]="popularCurrencySymbolEnum.USD" (baseAmountChange)="baseAmountChange($event)">
+</app-currency-conversion-form>
 
 <!-- start popular currency grid -->
 <div class="section-header">Popular Currencies

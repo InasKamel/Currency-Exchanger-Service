@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CurrencyExchangerService } from 'src/app/services/currency-exchanger.service';
+import { popularCurrencySymbolEnum } from 'src/app/shared/enums/popular-currency-sumbol.enum';
 import { CurrencyConversionDTO } from 'src/app/shared/models/currency-conversion-dto';
 
 @Component({
@@ -9,6 +11,9 @@ import { CurrencyConversionDTO } from 'src/app/shared/models/currency-conversion
 })
 export class CurrencyConversionFormComponent implements OnInit {
 
+  @Input() fromCurrency: popularCurrencySymbolEnum;
+  @Input() toCurrency: popularCurrencySymbolEnum;
+  @Input() currencyReadOnly: boolean;
   @Output() baseAmountChange: EventEmitter<CurrencyConversionDTO> = new EventEmitter<CurrencyConversionDTO>();
 
   currencyConversionDTO: CurrencyConversionDTO;
@@ -16,16 +21,17 @@ export class CurrencyConversionFormComponent implements OnInit {
   currencyDDL: string[];
   baseCurrencyAccessRestricted: boolean;
 
-  constructor(private currencyExchangerService: CurrencyExchangerService) {
-    this.currencyConversionDTO = new CurrencyConversionDTO();
-    this.currencyConversionDTO.fromAmount = 10.00;
-    this.currencyConversionDTO.fromCurrency = "USD";
-    this.currencyConversionDTO.toAmount = 157.22732;
-    this.currencyConversionDTO.toCurrency = "EGP";
+  constructor(private currencyExchangerService: CurrencyExchangerService, private router: Router) {
+
 
   }
 
   ngOnInit(): void {
+    this.currencyConversionDTO = new CurrencyConversionDTO();
+    this.currencyConversionDTO.fromAmount = 10.00;
+    this.currencyConversionDTO.fromCurrency = popularCurrencySymbolEnum[this.fromCurrency];
+    this.currencyConversionDTO.toAmount = 157.22732;
+    this.currencyConversionDTO.toCurrency = popularCurrencySymbolEnum[this.toCurrency];
     // this.convert();
     this.fromAmountChange();
     this.getCurrencies();
@@ -63,6 +69,10 @@ export class CurrencyConversionFormComponent implements OnInit {
         this.currencyDDL = Object.keys(res.symbols);
       }
     })
+  }
+
+  viewDetailsPage() {
+    this.router.navigate([`/currency-exchanger/${this.currencyConversionDTO.fromCurrency}/${this.currencyConversionDTO.toCurrency}`])
   }
 
 }

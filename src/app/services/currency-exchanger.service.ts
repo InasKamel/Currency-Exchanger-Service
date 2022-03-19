@@ -14,10 +14,16 @@ export class CurrencyExchangerService {
   constructor(private http: HttpClient) {
     this.baseURL = 'http://data.fixer.io/api/';
     this.accessKey = '?access_key=477f73b9db08241187d368ca73838cb8';
+    // this.baseURL = 'ddddd';
+    // this.accessKey = 'ddddd';
   }
 
-  getHistoricalRates(data: CurrencyConversionDTO): Observable<any> {
-    return this.http.get(`${this.baseURL}${data.todayDate}${this.accessKey}&base=${data.fromCurrency}&symbols=${data.toCurrency}`) as Observable<any>
+  convert(data: CurrencyConversionDTO) {
+    return this.http.get(`${this.baseURL}convert${this.accessKey}&from=${data.fromCurrency}&to=${data.toCurrency}&amount=${data.fromAmount}`) as Observable<any>
+
+  }
+  getHistoricalRates(startDate: string, fromCurrency: string, toCurrency: string): Observable<any> {
+    return this.http.get(`${this.baseURL}${startDate}${this.accessKey}&base=${fromCurrency}&symbols=${toCurrency}`) as Observable<any>
   }
 
   getCurrenciesSymbols() {

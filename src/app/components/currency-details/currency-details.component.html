@@ -1,10 +1,41 @@
 <!-- start page header -->
 <div class="page-header">
-    <div class="page-header__title">{{fromCurrency}}</div>
-    <div class="page-header__subtitle">{{fromCurrency}}</div>
+    <div class="page-header__title">{{fromCurrency}} - {{fromCurrencyName}}</div>
+    <div class="page-header__subtitle">View Historical rates between selected currencies</div>
 </div>
 
 <!-- start currency conversion form -->
 <app-currency-conversion-form [fromCurrency]="popularCurrencySymbolEnum[fromCurrency]"
     [toCurrency]="popularCurrencySymbolEnum[toCurrency]" [currencyReadOnly]="true">
 </app-currency-conversion-form>
+
+<!-- start historical rates chart -->
+<div>
+    <div class="section-header">Historical Rates Chart
+
+        <svg kendoTooltip title="Here you can see a simple chart of historical data for selected currency">
+            <use xlink:href="/assets/images/svg-icons.svg#icon-info"></use>
+        </svg>
+    </div>
+    <kendo-chart>
+        <!-- x-axis -->
+        <kendo-chart-value-axis>
+            <kendo-chart-value-axis-item [title]="{ text: 'Rates' }" [min]="0" [max]="5">
+
+            </kendo-chart-value-axis-item>
+        </kendo-chart-value-axis>
+
+        <!-- y-axis -->
+        <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="monthes">
+            </kendo-chart-category-axis-item>
+        </kendo-chart-category-axis>
+
+        <!-- series -->
+        <kendo-chart-series>
+            <kendo-chart-series-item [style]="'smooth'" type="line" [data]="historicalRates"
+                [markers]="{ visible: false }">
+            </kendo-chart-series-item>
+        </kendo-chart-series>
+    </kendo-chart>
+</div>

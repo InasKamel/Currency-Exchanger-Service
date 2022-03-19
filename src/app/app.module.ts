@@ -13,6 +13,10 @@ import { PositiveNumberDirective } from './shared/directives/positive-number.dir
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 
 
 
@@ -34,7 +38,8 @@ import { CurrencyDetailsComponent } from './components/currency-details/currency
     BrowserAnimationsModule,
     DropDownsModule,
     FormsModule,
-    TooltipsModule
+    TooltipsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

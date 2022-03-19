@@ -1,27 +1,19 @@
-# CurrencyExchangerService
+# Currency Exchanger Service
+### Currency Exchanger is an app the helps customers to hand different currency conversions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Project backlog
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| #    | Task Title                             | Task Description                                             | Task Est. |
+| ---- | -------------------------------------- | ------------------------------------------------------------ | --------- |
+| 001  | Apply the web application UI/UX design | - Choose matched colors<br />- Apply user friendly design<br />- Try to make the UX design simplify the core feature as much as possible<br />- Apply small screen design<br />- Apply additional sub-features such as user menu,login screen, and sidebar | 2h        |
+| 002  | Install the project                    | - Create new repository & new project<br />- Install required tools,3-rd libraries,framewroks, ...etc. | 3h        |
+| 003  | Add landing page                       | - Add sidebar<br />- Add top bar<br />- Apply angular single page application feature<br />(note: responsiveness of each part should be taken into consideration) | 10h       |
+| 004  | Add currency exchanger page            | - Add currency conversion form component<br />- Display the converted amount to the most popular currencies into 3x3 card grid | 16h       |
+| 005  | Add details page                       | - Make use of the currency conversion form component from the previous task<br />- Add currency historical rates chart |           |
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
